@@ -19,7 +19,7 @@ export default async function Home() {
     <main className="container mx-auto flex flex-col p-4">
       <h1 className="text-3xl font-bold">{title}</h1>
       <p className=" text-zinc-600">{description}</p>
-      <HeroSection data={{...heroSection, title, description}} />
+      <HeroSection data={heroSection} />
     </main>
   );
 }
