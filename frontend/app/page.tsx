@@ -1,5 +1,6 @@
-import { HeroSection } from "@/components/hero-section";
+import { Suspense } from "react"
 import { getHomePage } from "@/lib/strapi";
+import HomeContent from "@/components/home-content";
 
 export async function generateMetadata(){
   const strapiData = await getHomePage()
@@ -9,17 +10,10 @@ export async function generateMetadata(){
     }
   }
 
-export default async function Home() {
-  const strapiData = await getHomePage();
-
-  const {title, description} = strapiData
-  const [heroSection] = strapiData?.sections || []
-
+export default function Home() {
   return (
-    <main className="container mx-auto flex flex-col p-4">
-      <h1 className="text-3xl font-bold">{title}</h1>
-      <p className=" text-zinc-600">{description}</p>
-      <HeroSection data={heroSection} />
-    </main>
-  );
+    <Suspense fallback={<div>Cargando página...</div>}>
+      <HomeContent />
+    </Suspense>
+  )
 }
