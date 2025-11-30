@@ -115,7 +115,7 @@ export default function PageProd() {
 //   }
 
 //   return (
-//     <main className="min-h-screen py-20 px-4">
+//     <div className="py-20 px-4">
 //       <div className="mx-auto max-w-6xl">
 //         <div className="mb-8">
 //           <Link href="/manual" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -183,6 +183,6 @@ export default function PageProd() {
 //           </div>
 //         </div>
 //       </div>
-//     </main>
+//     </div>
 //   )
 // }

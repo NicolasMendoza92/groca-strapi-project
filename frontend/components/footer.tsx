@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 text-center md:grid-cols-3 md:text-center">
           {/* Logo + Mission */}
           <div className="space-y-4">
             <div className="font-serif text-2xl font-light">Mística</div>
@@ -18,7 +18,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-serif text-lg font-light">Navegación</h3>
             <nav
-              className="flex flex-col gap-2"
+              className="flex flex-col gap-2 items-center md:items-center"
               aria-label="Enlaces rápidos del footer"
             >
               <Link
@@ -52,7 +52,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-serif text-lg font-light">Contacto</h3>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center md:justify-center">
               {/* Instagram */}
               <Link
                 href="https://instagram.com/tu_cuenta"

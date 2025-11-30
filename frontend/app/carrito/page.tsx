@@ -36,7 +36,7 @@ export default function CarritoPage() {
   }
 
   return (
-    <main className="min-h-screen py-20 px-4">
+    <div className="py-20 px-4">
       <div className="mx-auto max-w-4xl">
         <h1 className="mb-12 text-center font-serif text-5xl font-light">
           Tu Carrito
@@ -122,6 +122,6 @@ export default function CarritoPage() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

@@ -77,7 +77,7 @@ export default function ManualPage() {
   }, [])
 
   return (
-    <main className="min-h-screen py-20 px-4">
+    <div className="py-20 px-4">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <h1 className="mb-4 font-serif text-5xl font-light text-foreground md:text-6xl">El Manual</h1>
@@ -125,6 +125,6 @@ export default function ManualPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   )
 }

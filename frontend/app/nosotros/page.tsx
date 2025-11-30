@@ -58,7 +58,7 @@ export default function NosotrosPage() {
   }, [])
 
   return (
-    <main className="min-h-screen py-20 px-4">
+    <div className="py-20 px-4">
       <div className="mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <h1 className="mb-4 font-serif text-5xl font-light text-foreground md:text-6xl">Nosotros</h1>
@@ -98,6 +98,6 @@ export default function NosotrosPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   )
 }

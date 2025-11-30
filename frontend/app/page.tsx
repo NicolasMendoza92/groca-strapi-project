@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { getHomePage } from "@/lib/strapi";
 import HomeContent from "@/components/home-content";
+import Loader from "@/components/loader";
 
 export async function generateMetadata(){
   const strapiData = await getHomePage()
@@ -12,7 +13,7 @@ export async function generateMetadata(){
 
 export default function Home() {
   return (
-    <Suspense fallback={<div>Cargando página...</div>}>
+    <Suspense fallback={<div><Loader /></div>}>
       <HomeContent />
     </Suspense>
   )

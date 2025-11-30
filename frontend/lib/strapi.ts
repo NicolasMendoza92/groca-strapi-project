@@ -1,6 +1,8 @@
 import qs from "qs";
+const {STRAPI_TOKEN} = process.env
 
 export const STRAPI_BASE_URL =process.env.PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+
 
 const QUERY_HOME_PAGE = {
   populate: {
@@ -20,6 +22,21 @@ const QUERY_HOME_PAGE = {
     },
   },
 };
+
+export async function query (url:string){
+  return fetch(`${STRAPI_BASE_URL}/api/${url}`,{
+    headers: {
+        Authorization: `Bearer ${STRAPI_TOKEN}`,
+      },
+  }).then(res => res.json())
+}
+
+export async function getNosotrosPage(){
+  return query("nosotros").then(res => {
+    console.log(res)
+    return res
+  })
+}
 
 export async function getHomePage() {
   const query = qs.stringify(QUERY_HOME_PAGE);
@@ -84,3 +101,4 @@ export async function loginUserService (userData: object) {
     throw error
   }
 }
+
