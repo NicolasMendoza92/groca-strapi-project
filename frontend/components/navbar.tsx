@@ -14,8 +14,8 @@ import {
 
 const navLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/manual", label: "El Manual" },
-  { href: "/nosotros", label: "Nosotros" },
+  { href: "/el-manual", label: "El Manual" },
+  { href: "/sobre-mi", label: "Sobre Mi" },
 ];
 
 export function Navbar() {
@@ -100,7 +100,7 @@ export function Navbar() {
             <SheetContent side="right" aria-hidden={!isOpen}>
               <SheetTitle className="ps-2 pt-2 flex justify-start ">Menú</SheetTitle>
               <SheetDescription className="hidden">
-                Explora las secciones de Mística.
+                Explora las secciones.
               </SheetDescription>
               <div className="flex flex-col gap-6 pt-5">
                 {navLinks.map((link) => (

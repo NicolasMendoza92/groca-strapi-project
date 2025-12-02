@@ -1,5 +1,4 @@
 import qs from "qs";
-const {STRAPI_TOKEN} = process.env
 
 export const STRAPI_BASE_URL =process.env.PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 
@@ -23,26 +22,32 @@ const QUERY_HOME_PAGE = {
   },
 };
 
-export async function query (url:string){
-  return fetch(`${STRAPI_BASE_URL}/api/${url}`,{
-    headers: {
-        Authorization: `Bearer ${STRAPI_TOKEN}`,
+const QUERY_SOBRE_MI = {
+  populate: {
+    sections: {
+      populate: {
+        image: true,
       },
-  }).then(res => res.json())
-}
+    },
+  },
+};
 
-export async function getNosotrosPage(){
-  return query("nosotros").then(res => {
-    console.log(res)
-    return res
-  })
-}
+const QUERY_PRODUCTS = {
+      populate: {
+        image: true,
+      },
+    };
 
-export async function getHomePage() {
-  const query = qs.stringify(QUERY_HOME_PAGE);
-  const response = await getStrapiData(`/api/home-page?${query}`);
-  return response?.data;
-}
+
+const QUERY_PRODUCT_BY_SLUG = (slug: string) => ({
+  filters: { slug: { $eq: slug } },
+  populate: {
+    image: true,
+    detail: {
+      populate: '*', 
+    },
+  },
+});
 
 export async function getStrapiData(url: string) {
   try {
@@ -60,6 +65,40 @@ export async function getStrapiData(url: string) {
   }
 }
 
+export async function getHomePage() {
+  const query = qs.stringify(QUERY_HOME_PAGE);
+  const response = await getStrapiData(`/api/home-page?${query}`);
+  return response?.data;
+}
+
+export async function getSobreMiPage(){
+  const query = qs.stringify(QUERY_SOBRE_MI);
+ const response = await getStrapiData(`/api/sobre-mi?${query}`);
+  return response?.data;
+}
+
+export async function getManualPage(){
+ const response = await getStrapiData(`/api/el-manual`);
+  return response?.data;
+}
+
+export async function getProducts(){
+  const query = qs.stringify(QUERY_PRODUCTS);
+ const response = await getStrapiData(`/api/products?${query}`);
+  return response?.data;
+}
+
+export async function getProductBySlug(slug: string) {
+  const query = qs.stringify(QUERY_PRODUCT_BY_SLUG(slug), {
+    encodeValuesOnly: true,
+  });
+  
+  const res = await getStrapiData(`/api/products?${query}`);
+  return res?.data?.[0] || null; 
+}
+
+
+// LOGICA DE AUTH
 export async function registerUserService (userData: object) {
   const url = `${STRAPI_BASE_URL}/api/auth/local/register`
 

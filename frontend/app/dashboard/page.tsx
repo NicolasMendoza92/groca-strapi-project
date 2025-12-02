@@ -1,4 +1,5 @@
 
+import Loader from '@/components/loader'
 import LogoutButton from '@/components/logout-button'
 import { cookies } from 'next/headers'
 import { Suspense } from 'react'
@@ -17,7 +18,7 @@ export async function DashboardContent() {
 
 export default function DashboardRoute() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div><Loader/></div>}>
       <DashboardContent />
     </Suspense>
   )
