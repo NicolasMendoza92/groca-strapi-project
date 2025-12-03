@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "sobre_mis",
+  "info": {
+    "singularName": "sobre-mi",
+    "pluralName": "sobre-mis",
+    "displayName": "Sobre Mi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "sections": {
+      "type": "component",
+      "component": "section.section",
+      "repeatable": true
+    }
+  }
+}

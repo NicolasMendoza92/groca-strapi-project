@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "el_manuals",
+  "info": {
+    "singularName": "el-manual",
+    "pluralName": "el-manuals",
+    "displayName": "El Manual"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

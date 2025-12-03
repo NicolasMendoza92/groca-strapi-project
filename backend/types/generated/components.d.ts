@@ -30,11 +30,25 @@ export interface LayoutHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionSection extends Struct.ComponentSchema {
+  collectionName: 'components_section_sections';
+  info: {
+    displayName: 'Sobre Mi';
+    icon: 'apps';
+  };
+  attributes: {
+    content: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'files' | 'images'>;
+    item: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'component.link': ComponentLink;
       'layout.hero-section': LayoutHeroSection;
+      'section.section': SectionSection;
     }
   }
 }
