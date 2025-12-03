@@ -111,7 +111,7 @@ export default function CarritoPage() {
             Proceder al Pago
           </Button>
 
-          <Link href="/manual">
+          <Link href="/el-manual">
             <Button
               variant="outline"
               size="lg"
