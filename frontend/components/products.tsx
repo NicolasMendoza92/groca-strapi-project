@@ -36,7 +36,7 @@ export default function Productos({ books }: { books: Product[] }) {
 
   return (
     <div className="space-y-24">
-      {books.map((book, index) => (
+      {books?.map((book, index) => (
         <section
           key={book.id}
           ref={(el) => {
