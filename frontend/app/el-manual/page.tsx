@@ -1,14 +1,16 @@
-import Loader from "@/components/loader";
-import ManualContent from "@/components/manual-content";
-import { getManualPage } from "@/lib/strapi";
-import { Suspense } from "react";
+'use cache'
 
-export async function ManualContentPage() {
-  const manualData = await getManualPage();
-  return <ManualContent data={manualData} />;
+//import Loader from '@/components/loader'
+import ManualContent from '@/components/manual-content'
+import { getManualPage } from '@/lib/strapi'
+//import { Suspense } from 'react'
+
+export default async function ManualPage() {
+  const manualData = await getManualPage()
+  return <ManualContent data={manualData} />
 }
 
-export default function ManualPage() {
+/* export default function ManualPage() {
   return (
     <Suspense
       fallback={
@@ -19,5 +21,5 @@ export default function ManualPage() {
     >
       <ManualContentPage />
     </Suspense>
-  );
-}
+  )
+} */

@@ -41,6 +41,13 @@
   "pnpm": {
     "overrides": {
       "file-type": "16.5.3"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "better-sqlite3",
+      "core-js-pure",
+      "esbuild",
+      "sharp"
+    ]
   }
 }
