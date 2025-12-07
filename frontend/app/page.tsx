@@ -1,13 +1,13 @@
 import { Suspense } from "react"
 import { getHomePage } from "@/lib/strapi";
 import Loader from "@/components/loader";
-import GrocaIconHome from "@/components/groca-home";
+import HomeGrocaPage from "@/components/home-page";
 
 
 export async function HomeContentPage() {
   const homeData = await getHomePage()
   return (
-       <GrocaIconHome data={homeData} />
+       <HomeGrocaPage data={homeData} />
   )
 }
 

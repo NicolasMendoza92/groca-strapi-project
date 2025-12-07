@@ -1,51 +1,94 @@
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { HomeData } from "@/types";
+"use client";
+import { getStrapiMedia } from "@/lib/strapi";
+import { HeroGroca, SymbolsCard } from "@/types";
+import { useEffect, useState } from "react";
 
-export function HeroSection({ data }: { data: HomeData }) {
-  const {title ,description } = data || {};
+interface HeroGrocaSectionProps {
+  hero_section: HeroGroca;
+  symbols: SymbolsCard[];
+}
+
+export function HeroGrocaSection({
+  hero_section,
+  symbols,
+}: HeroGrocaSectionProps) {
+  console.log("HeroGrocaSection Props:", { hero_section, symbols });
+  const [scrollY, setScrollY] = useState(0);
+  const [showThreshold, setShowThreshold] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      if (window.scrollY > 400) {
+        setShowThreshold(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {hero_section.image && (
+        <div className="mb-20 overflow-hidden rounded-lg">
           <img
-           src={ "/mystical-cosmic-energy-ethereal-purple-nebula-star.jpg" }
-            alt="Fondo místico"
-            className="h-full w-full object-cover opacity-40"
+            src={getStrapiMedia(hero_section.image?.url)}
+            alt="Foto del artista"
+            className="h-auto w-full object-cover"
+            loading="lazy"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/50 to-background" />
         </div>
+      )}
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h1 className="mb-6 font-serif text-5xl font-light tracking-wide text-foreground md:text-7xl text-balance">
-            {title}
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed">
-            {description}
-          </p>
-          <Link href={"/groca"}>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 py-6 text-lg shadow-lg transition-all hover:scale-105"
-            >
-              label
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-6 font-serif text-3xl font-light text-foreground md:text-4xl">
-            holis
+      <div className="mx-auto max-w-4xl">
+        <div
+          className={`mb-20 text-center transition-all duration-1000 ${
+            showThreshold
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+          }`}
+        >
+          <h2 className="mb-8 font-serif text-4xl font-light tracking-wider text-foreground md:text-6xl">
+            {hero_section.title}
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            holis por 2da vez
+          <p className="text-xl text-muted-foreground italic">
+            {hero_section.subtitle}
           </p>
         </div>
-      </section>
+
+        {/* Sacred Symbols */}
+        <div className="grid gap-12 md:grid-cols-2">
+          {symbols.map((symbol, index) => (
+            <div
+              key={symbol.id ?? index}
+              className="flex flex-col items-center gap-6 transition-all duration-1000"
+              style={{
+                opacity: Math.min((scrollY - (400 + index * 200)) / 300, 1),
+                transform: `translateY(${Math.max(
+                  0,
+                  50 - (scrollY - (400 + index * 200)) / 10
+                )}px)`,
+              }}
+            >
+              <div className="flex h-64 w-64 items-center justify-center rounded-full border-2 border-primary/30 bg-linear-to-br from-primary/10 to-accent/10 p-8">
+                {symbol.image && (
+                  <img
+                    src={getStrapiMedia(symbol.image.url)}
+                    alt={symbol.image?.alternativeText}
+                    className="h-full w-full object-contain"
+                  />
+                )}
+              </div>
+              <h3 className="font-serif text-2xl font-light">
+                {symbol.title}
+              </h3>
+              <p className="text-center text-sm text-muted-foreground">
+                {symbol.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

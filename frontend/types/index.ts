@@ -10,12 +10,38 @@ type LinkData = {
   isExternal?:boolean
 }
 
-type Section = {
+export interface GrocaContentData{
+  title?:string;
+  subtitle?:string;
+  description?:string;
+  intro_paragraphs?:Paragraph[];
+  hero_section?:HeroGroca;
+  symbols?:SymbolsCard[];
+  musical_card?:MusicalCardType;
+}
+
+export interface HeroGroca  {
+  title?: string;
+  subtitle?: string;
+  image?: ImageData;
+}
+
+export interface SymbolsCard  {
   id: number;
+  title?: string;
+  description?: string;
   image: ImageData;
-  heading?: string;
-  subheading?: string;
-  link?: LinkData;
+}
+
+export type Paragraph = {
+  id?: number;
+  content?: string | null;
+};
+
+export interface MusicalCardType  {
+  title?: string;
+  description?: string;
+  button_link?: LinkData;
 }
 
 export interface HomeData {
@@ -25,17 +51,16 @@ export interface HomeData {
   background: ImageData;
 }
 
-type SectionCard = {
+export type ImageContent = {
   id: number;
-  item?: string;
-  content?: string;
   image?: ImageData;
+  paragraphs?: Paragraph[];
 }
 
 export interface SobreMiData {
   title?: string;
   description?: string;
-  sections?: SectionCard[];
+  sections?: ImageContent[];
 }
 
 export interface ElManualData {

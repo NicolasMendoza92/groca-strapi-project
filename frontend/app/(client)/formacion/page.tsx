@@ -6,7 +6,7 @@ const modulos = [
   {
     id: 1,
     nombre: "Módulo 1",
-    disponible: true,
+    disponible: false,
   },
   {
     id: 2,

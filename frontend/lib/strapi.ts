@@ -2,24 +2,41 @@ import qs from "qs";
 
 export const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
-// const QUERY_HOME_PAGE = {
-//   populate: {
-//     sections: {
-//       on: {
-//         'layout.hero-section': {
-//           populate: {
-//             image: {
-//               fields: ['url', 'alternativeText']
-//             },
-//             link: {
-//               populate: true
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+const QUERY_SOBRE_MI = {
+  populate: {
+    sections: {
+      populate: {
+        image: { populate: "*" },
+        paragraphs: { populate: "*" },
+      },
+    },
+  },
+};
+
+const QUERY_GROCA = {
+  populate: {
+    intro_paragraphs: {
+      populate: "*",
+    },
+    musical_card: {
+      populate: {
+        button_link: {
+          populate: "*",
+        },
+      },
+    },
+    hero_section: {
+      populate: {
+        image: { populate: "*" },
+      },
+    },
+    symbols: {
+      populate: {
+        image: { populate: "*" },
+      },
+    },
+  },
+};
 
 const QUERY_HOME_PAGE = {
   populate: {
@@ -27,16 +44,6 @@ const QUERY_HOME_PAGE = {
     logo: true,
   },
 };
-
-// const QUERY_SOBRE_MI = {
-//   populate: {
-//     sections: {
-//       populate: {
-//         image: true
-//       }
-//     }
-//   }
-// }
 
 const QUERY_PRODUCTS = {
   sort: ["order:asc"], 
@@ -81,9 +88,17 @@ export async function getHomePage() {
   return response?.data
 }
 
+export async function getGrocaPage() {
+  const query = qs.stringify(QUERY_GROCA)
+  const response = await getStrapiData(`/api/groca?${query}`)
+  return response?.data
+}
+
+
 export async function getSobreMiPage() {
-  // const query = qs.stringify(QUERY_SOBRE_MI)
-  const response = await getStrapiData(`/api/sobre-mi`)
+  // const url = `/api/sobre-mi?populate[sections][populate]=image`
+  const query = qs.stringify(QUERY_SOBRE_MI)
+  const response = await getStrapiData(`/api/sobre-mi?${query}`)
   return response?.data
 }
 
