@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "grocas",
+  "info": {
+    "singularName": "groca",
+    "pluralName": "grocas",
+    "displayName": "Groca"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "intro_paragraphs": {
+      "type": "component",
+      "component": "paragraph.intro-paragraphs",
+      "repeatable": true
+    },
+    "musical_card": {
+      "type": "component",
+      "component": "musical-card.musical-card",
+      "repeatable": false
+    },
+    "hero_section": {
+      "type": "component",
+      "component": "hero.hero-section",
+      "repeatable": false
+    },
+    "symbols": {
+      "type": "component",
+      "component": "symbols.card-symbols",
+      "repeatable": true
+    }
+  }
+}

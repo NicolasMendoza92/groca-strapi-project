@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_paragraph_intro_paragraphs",
+  "info": {
+    "displayName": "IntroParagraph",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

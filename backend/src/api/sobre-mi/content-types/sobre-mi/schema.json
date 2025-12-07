@@ -16,6 +16,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "sections": {
+      "type": "component",
+      "component": "section.section",
+      "repeatable": true
     }
   }
 }

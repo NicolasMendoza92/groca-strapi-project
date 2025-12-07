@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_musical_card_musical_cards",
+  "info": {
+    "displayName": "MusicalCard",
+    "icon": "music"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "button_link": {
+      "type": "component",
+      "component": "component.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

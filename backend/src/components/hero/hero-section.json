@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_hero_hero_sections",
+  "info": {
+    "displayName": "HeroGroca",
+    "icon": "house"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

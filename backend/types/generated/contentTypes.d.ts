@@ -459,6 +459,43 @@ export interface ApiElManualElManual extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiGrocaGroca extends Struct.SingleTypeSchema {
+  collectionName: 'grocas';
+  info: {
+    displayName: 'Groca';
+    pluralName: 'grocas';
+    singularName: 'groca';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    hero_section: Schema.Attribute.Component<'hero.hero-section', false>;
+    intro_paragraphs: Schema.Attribute.Component<
+      'paragraph.intro-paragraphs',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::groca.groca'> &
+      Schema.Attribute.Private;
+    musical_card: Schema.Attribute.Component<
+      'musical-card.musical-card',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    symbols: Schema.Attribute.Component<'symbols.card-symbols', true>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_pages';
   info: {
@@ -705,6 +742,7 @@ export interface ApiSobreMiSobreMi extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'section.section', true>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1223,6 +1261,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::el-manual.el-manual': ApiElManualElManual;
+      'api::groca.groca': ApiGrocaGroca;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::product-detail.product-detail': ApiProductDetailProductDetail;

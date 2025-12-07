@@ -1,17 +1,11 @@
 {
   "collectionName": "components_section_sections",
   "info": {
-    "displayName": "CardImage",
+    "displayName": "ImageContent",
     "icon": "apps"
   },
   "options": {},
   "attributes": {
-    "item": {
-      "type": "string"
-    },
-    "content": {
-      "type": "text"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -19,6 +13,11 @@
         "files",
         "images"
       ]
+    },
+    "paragraphs": {
+      "type": "component",
+      "component": "paragraph.intro-paragraphs",
+      "repeatable": true
     }
   },
   "config": {}
