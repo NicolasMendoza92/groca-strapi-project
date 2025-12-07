@@ -59,7 +59,7 @@ export async function registerUserAction(
 
   const cookieStore = await cookies()
   cookieStore.set('jwt', response.jwt, cookieConfig)
-  redirect('/dashboard')
+  redirect('/profile')
 }
 
 
@@ -110,7 +110,7 @@ export async function loginUserAction(
   const cookieStore = await cookies()
   cookieStore.set("jwt", response.jwt, cookieConfig)
 
-  redirect("/dashboard")
+  redirect("/profile")
 }
 
 

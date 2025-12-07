@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid gap-8 text-center md:grid-cols-3 md:text-center">
           {/* Logo + Mission */}
           <div className="space-y-4">
-            <div className="font-serif text-2xl font-light">Mística</div>
+            <div className="font-serif text-2xl font-light">GRoCa</div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Iluminando caminos hacia la consciencia superior a través del
               conocimiento ancestral y contemporáneo.
@@ -22,10 +22,10 @@ export function Footer() {
               aria-label="Enlaces rápidos del footer"
             >
               <Link
-                href="/"
+                href="/groca"
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                Inicio
+                GRoCa
               </Link>
               <Link
                 href="/manual"
@@ -34,10 +34,10 @@ export function Footer() {
                 El Manual
               </Link>
               <Link
-                href="/nosotros"
+                href="/sobre-mi"
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                Nosotros
+                Sobre Mí
               </Link>
               <Link
                 href="/carrito"

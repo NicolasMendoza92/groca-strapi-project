@@ -1,20 +1,13 @@
 import { Suspense } from "react"
 import { getHomePage } from "@/lib/strapi";
 import Loader from "@/components/loader";
-import { HeroSection } from "@/components/hero-section";
+import GrocaIconHome from "@/components/groca-home";
 
-// export async function generateMetadata(){
-//   const strapiData = await getHomePage()
-//     return {
-//       title: strapiData?.title || "GRoCa",
-//       description: strapiData?.description || "La Puerta Se Ha Abierto Para Ti",
-//     }
-// }
 
 export async function HomeContentPage() {
-  const nosotrosData = await getHomePage()
+  const homeData = await getHomePage()
   return (
-       <HeroSection data={nosotrosData} />
+       <GrocaIconHome data={homeData} />
   )
 }
 

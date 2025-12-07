@@ -13,9 +13,10 @@ import {
 } from "./ui/sheet";
 
 const navLinks = [
-  { href: "/", label: "Inicio" },
+  { href: "/groca", label: "GRoCa" },
   { href: "/el-manual", label: "El Manual" },
   { href: "/sobre-mi", label: "Sobre Mi" },
+  { href: "/formacion", label: "Formación" },
 ];
 
 export function Navbar() {
@@ -45,7 +46,11 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <div className="font-serif text-2xl font-light tracking-wide">
-            Mística
+            <img
+              src="/logo.png"
+              alt="GRoCa Logo"
+              className="h-10 w-10 object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100"
+            />
           </div>
         </Link>
 

@@ -4,7 +4,7 @@ import LogoutButton from '@/components/logout-button'
 import { cookies } from 'next/headers'
 import { Suspense } from 'react'
 
-export async function DashboardContent() {
+export async function ProfileContent() {
   const cookieStore = await cookies()
   const jwt = cookieStore.get('jwt')?.value ?? null
 
@@ -16,10 +16,10 @@ export async function DashboardContent() {
   )
 }
 
-export default function DashboardRoute() {
+export default function ProfileRoute() {
   return (
     <Suspense fallback={<div><Loader/></div>}>
-      <DashboardContent />
+      <ProfileContent />
     </Suspense>
   )
 }

@@ -94,6 +94,23 @@
       "relation": "oneToOne",
       "target": "api::product-detail.product-detail",
       "inversedBy": "product"
+    },
+    "published": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "order": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
     }
   }
 }

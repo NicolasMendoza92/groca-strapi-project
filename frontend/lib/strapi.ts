@@ -2,36 +2,44 @@ import qs from "qs";
 
 export const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
+// const QUERY_HOME_PAGE = {
+//   populate: {
+//     sections: {
+//       on: {
+//         'layout.hero-section': {
+//           populate: {
+//             image: {
+//               fields: ['url', 'alternativeText']
+//             },
+//             link: {
+//               populate: true
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
 const QUERY_HOME_PAGE = {
   populate: {
-    sections: {
-      on: {
-        'layout.hero-section': {
-          populate: {
-            image: {
-              fields: ['url', 'alternativeText']
-            },
-            link: {
-              populate: true
-            }
-          }
-        }
-      }
-    }
-  }
-}
+    background: true,
+    logo: true,
+  },
+};
 
-const QUERY_SOBRE_MI = {
-  populate: {
-    sections: {
-      populate: {
-        image: true
-      }
-    }
-  }
-}
+// const QUERY_SOBRE_MI = {
+//   populate: {
+//     sections: {
+//       populate: {
+//         image: true
+//       }
+//     }
+//   }
+// }
 
 const QUERY_PRODUCTS = {
+  sort: ["order:asc"], 
   populate: {
     image: true
   }
@@ -61,6 +69,12 @@ export async function getStrapiData(url: string) {
   }
 }
 
+export function getStrapiMedia(url?: string | null) {
+  if (!url) return "";
+  if (url.startsWith("http")) return url;
+  return `${STRAPI_BASE_URL}${url}`;
+}
+
 export async function getHomePage() {
   const query = qs.stringify(QUERY_HOME_PAGE)
   const response = await getStrapiData(`/api/home-page?${query}`)
@@ -68,8 +82,8 @@ export async function getHomePage() {
 }
 
 export async function getSobreMiPage() {
-  const query = qs.stringify(QUERY_SOBRE_MI)
-  const response = await getStrapiData(`/api/sobre-mi?${query}`)
+  // const query = qs.stringify(QUERY_SOBRE_MI)
+  const response = await getStrapiData(`/api/sobre-mi`)
   return response?.data
 }
 
@@ -92,6 +106,7 @@ export async function getProductBySlug(slug: string) {
   const res = await getStrapiData(`/api/products?${query}`)
   return res?.data?.[0] || null
 }
+
 
 // LOGICA DE AUTH
 export async function registerUserService(userData: object) {

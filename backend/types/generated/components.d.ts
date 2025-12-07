@@ -33,7 +33,7 @@ export interface LayoutHeroSection extends Struct.ComponentSchema {
 export interface SectionSection extends Struct.ComponentSchema {
   collectionName: 'components_section_sections';
   info: {
-    displayName: 'Sobre Mi';
+    displayName: 'CardImage';
     icon: 'apps';
   };
   attributes: {

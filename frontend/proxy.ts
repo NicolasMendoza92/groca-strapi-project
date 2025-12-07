@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { STRAPI_BASE_URL } from "./lib/strapi";
 
-const protectedRoutes = ["/dashboard"];
+const protectedRoutes = ["/profile"];
 
 function checkIsProtectedRoute(path: string) {
   return protectedRoutes.includes(path);
@@ -49,7 +49,7 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/dashboard",
-    "/dashboard/:path*",
+    "/profile",
+    "/profile/:path*",
   ],
 };

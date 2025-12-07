@@ -21,7 +21,8 @@ type Section = {
 export interface HomeData {
   title: string;
   description: string;
-  sections: Section[];
+  logo: ImageData;
+  background: ImageData;
 }
 
 type SectionCard = {
@@ -51,10 +52,12 @@ export type Product = {
   id: number;
   slug:string;
   name: string;
-  subname:string;
+  subname?:string;
   description: string;
   price: number;
   image: ImageData;
+  order: number;
+  published?:Date;
   isActive?:boolean;
   detail?:ProductDetial
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { STRAPI_BASE_URL } from "@/lib/strapi";
+import { getStrapiMedia} from "@/lib/strapi";
 import { Product } from "@/types";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default function ProductDetail({
 }: {
   productDetail: Product;
 }) {
-   const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false);
 
   if (!productDetail) {
     return (
@@ -31,8 +31,10 @@ export default function ProductDetail({
     alert("añadido al carrito");
   };
 
-   const description = productDetail.detail?.resume || ""
-  const shortDescription = description.slice(0, 250)
+  const description = productDetail.detail?.resume || "";
+  const shortDescription = description.slice(0, 250);
+
+  const productImageUrl = getStrapiMedia(productDetail.image?.url);
 
   return (
     <div className=" py-20 px-4">
@@ -51,11 +53,7 @@ export default function ProductDetail({
             <div className="sticky top-24">
               <div className="overflow-hidden rounded-lg shadow-2xl">
                 <img
-                  src={
-                    productDetail.image?.url
-                      ? `${STRAPI_BASE_URL}${productDetail.image.url}`
-                      : "/placeholder.svg"
-                  }
+                  src={productImageUrl || "/placeholder.svg"}
                   alt={productDetail.image?.alternativeText}
                   className="h-[600px] w-full object-cover"
                 />
@@ -94,24 +92,24 @@ export default function ProductDetail({
         </div>
       </div>
       <div className="space-y-4 mt-12">
-          <h2 className="font-serif text-2xl font-light">Descripción</h2>
+        <h2 className="font-serif text-2xl font-light">Descripción</h2>
 
-          <p className="text-muted-foreground leading-relaxed transition-all duration-300">
-            {isExpanded ? description : shortDescription}
+        <p className="text-muted-foreground leading-relaxed transition-all duration-300">
+          {isExpanded ? description : shortDescription}
 
-            {!isExpanded && description.length > 250 && "…"}
-          </p>
+          {!isExpanded && description.length > 250 && "…"}
+        </p>
 
-          {description.length > 250 && (
-            <Button
-              variant="outline"
-              className="rounded-full"
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
-              {isExpanded ? "Leer menos" : "Seguir leyendo"}
-            </Button>
-          )}
-        </div>
+        {description.length > 250 && (
+          <Button
+            variant="outline"
+            className="rounded-full"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? "Leer menos" : "Seguir leyendo"}
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
